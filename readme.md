@@ -6,8 +6,7 @@ A highly optimized, cross-platform QMK firmware configuration for the ZSA Voyage
 
 *The visualizer below is automatically generated and updated via GitHub Actions using Keymap Drawer.*
 
-<!-- keymap_drawer_start -->
-<!-- keymap_drawer_end -->
+![Voyager Layout](voyager_keymap.svg)
 
 ## Core Features
 

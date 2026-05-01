@@ -5,6 +5,7 @@ on:
       - senyoku-mainline
     paths:
       - 'keyboards/zsa/voyager/keymaps/senyoku/keymap.c'
+  workflow_dispatch:
 
 jobs:
   draw:
@@ -15,10 +16,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Draw keymap
-        uses: caksoylar/keymap-drawer@main
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          keymap_patterns: 'keyboards/zsa/voyager/keymaps/senyoku/keymap.c'
-          config_path: '' # Optional: We'll leave this blank to use defaults first
-          output_folder: 'keyboards/zsa/voyager/keymaps/senyoku' # Saves the SVG here
-          amend_commit: false # Creates a new commit rather than rewriting history
+          python-version: "3.11"
+
+      - name: Install Keymap Drawer
+        run: pip install keymap-drawer
+
+      - name: Parse and Draw Keymap
+        run: |
+          keymap parse -k zsa/voyager keyboards/zsa/voyager/keymaps/senyoku/keymap.c > keymap.yaml
+          keymap draw keymap.yaml > voyager_keymap.svg
+
+      - name: Commit updated SVG
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "[Auto] Update keymap SVG diagram"
+          file_pattern: "voyager_keymap.svg"
