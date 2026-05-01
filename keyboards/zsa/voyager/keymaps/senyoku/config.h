@@ -9,7 +9,7 @@
 // --- Combos & One-Shot ---
 #undef ONESHOT_TIMEOUT
 #define ONESHOT_TIMEOUT 3000
-#define COMBO_TERM 20
+#define COMBO_TERM 25
 
 // --- RGB Matrix Minimalist Settings ---
 #define RGB_MATRIX_STARTUP_SPD 60
