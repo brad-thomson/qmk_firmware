@@ -203,6 +203,36 @@ combo_t key_combos[] = {
     COMBO(combo13, KC_TAB),
 };
 
+// --- Variable combo speeds ---
+#ifdef COMBO_TERM_PER_COMBO
+uint16_t get_combo_term(uint16_t index, combo_t *combo) {
+    // Check what the combo is trying to output
+    switch (combo->keycode) {
+
+        // Fast actions (ESC, ENTER, TAB) get your snappy 20ms timeout
+        case KC_ESC:
+        case KC_ENTER:
+        case KC_TAB:
+            return 20;
+
+        // Momentary toggles (TT) and OS swaps (TO) get the relaxed 50ms timeout
+        case TT(6):
+        case TT(7):
+        case TT(8):
+        case TT(9):
+        case TT(12):
+        case TT(13):
+        case TO(0):
+        case TO(1):
+            return 50;
+
+        // Fallback to the global COMBO_TERM defined in config.h for anything else
+        default:
+            return COMBO_TERM;
+    }
+}
+#endif
+
 // --- Tap Dance Logic ---
 void q_dance_each(tap_dance_state_t *state, void *user_data) {}
 void q_dance_reset(tap_dance_state_t *state, void *user_data) {}
