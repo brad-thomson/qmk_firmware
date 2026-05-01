@@ -1,13 +1,17 @@
 name: Draw Keymap
+
 on:
+  # Trigger when changes are made to the keymap file
   push:
     branches:
       - senyoku-mainline
     paths:
       - 'keyboards/zsa/voyager/keymaps/senyoku/keymap.c'
+  # Allow manual triggering from the GitHub Actions tab
   workflow_dispatch:
 
 env:
+  # Use Node 24 to silence deprecation warnings for GitHub Actions
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
@@ -19,32 +23,34 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Ensures the action can see the full history to commit properly
+          # Required to allow the auto-commit action to push changes back
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install Dependencies
+      - name: Install QMK and Keymap Drawer
         run: pip install qmk keymap-drawer
 
       - name: Parse and Draw Keymap
         run: |
-          # 1. Convert C to JSON
-          # We run this from the root; QMK CLI will look for the keyboards/ folder automatically
+          # Convert C keymap to QMK JSON format
           qmk c2json -kb zsa/voyager -km senyoku keyboards/zsa/voyager/keymaps/senyoku/keymap.c > keymap.json
 
-          # 2. Parse and Draw
+          # Convert QMK JSON to Keymap Drawer YAML
           keymap parse -q keymap.json > keymap.yaml
-          keymap draw keymap.yaml > voyager_keymap.svg
+
+          # Generate SVG and save inside the keyboards folder to bypass root .gitignore
+          keymap draw keymap.yaml > keyboards/zsa/voyager/keymaps/senyoku/voyager_keymap.svg
 
       - name: Verify SVG Creation
         run: |
-          if [ -f "voyager_keymap.svg" ]; then
-            echo "SVG created successfully. Size: $(stat -c%s voyager_keymap.svg) bytes"
+          if [ -f "keyboards/zsa/voyager/keymaps/senyoku/voyager_keymap.svg" ]; then
+            echo "Success: SVG generated in keymap folder."
           else
-            echo "Error: voyager_keymap.svg was not created!"
+            echo "Error: SVG generation failed."
             exit 1
           fi
 
@@ -52,6 +58,5 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "[Auto] Update keymap SVG diagram"
-          file_pattern: "voyager_keymap.svg"
-          branch: senyoku-mainline # Explicitly tell it which branch to push to
-          push_options: '--force'
+          file_pattern: "keyboards/zsa/voyager/keymaps/senyoku/voyager_keymap.svg"
+          branch: senyoku-mainline

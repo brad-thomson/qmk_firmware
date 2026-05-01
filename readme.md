@@ -2,11 +2,9 @@
 
 A highly optimized, cross-platform QMK firmware configuration for the ZSA Voyager. Designed for efficiency, this layout bridges the gap between daily ergonomic typing and highly specific creative software workflows.
 
-## Layout Overview
+### Layout Overview
 
-*The visualizer below is automatically generated and updated via GitHub Actions using Keymap Drawer.*
-
-![Voyager Layout](voyager_keymap.svg)
+![Voyager Layout](keyboards/zsa/voyager/keymaps/senyoku/voyager_keymap.svg)
 
 ## Core Features
 
