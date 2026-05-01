@@ -1,4 +1,3 @@
-```yaml
 name: Draw Keymap
 on:
   push:
