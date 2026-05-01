@@ -28,7 +28,7 @@ enum tap_dance_codes {
 
 // --- Keymap Definition ---
 // L0-L1: Colemak-DH Base     | L2-L3: Navigation       | L4-L5: Symbols
-// L6-L7: Media               | L8-L9: Numpad           | L10-L11: QWERTY Fallback
+// L6-L7: Media               | L8-L9: Numpad           | L10-L11: QWERTY
 // L12-L13: Creator Shortcuts
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -170,7 +170,7 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM = LAYOUT_voyage
 );
 
 // --- Combos ---
-// Mapped cleanly since HRMs were returned to the bottom row, freeing up S/T and N/E.
+// Mapped cleanly since HRMs were returned to the bottom row.
 const uint16_t PROGMEM combo0[] = { MO(2), OSL(4), COMBO_END};
 const uint16_t PROGMEM combo1[] = { MO(3), OSL(5), COMBO_END};
 const uint16_t PROGMEM combo2[] = { MT(MOD_LCTL, KC_Z), MT(MOD_LALT, KC_X), COMBO_END};
@@ -181,6 +181,10 @@ const uint16_t PROGMEM combo6[] = { MO(2), OSM(MOD_LSFT), COMBO_END};
 const uint16_t PROGMEM combo7[] = { MO(3), OSM(MOD_LSFT), COMBO_END};
 const uint16_t PROGMEM combo8[] = { KC_S, KC_T, COMBO_END};
 const uint16_t PROGMEM combo9[] = { KC_N, KC_E, COMBO_END};
+const uint16_t PROGMEM combo10[] = { KC_R, KC_S, COMBO_END};
+const uint16_t PROGMEM combo11[] = { KC_E, KC_I, COMBO_END};
+const uint16_t PROGMEM combo12[] = { KC_A, KC_R, COMBO_END};
+const uint16_t PROGMEM combo13[] = { KC_I, KC_O, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(combo0, TT(6)),
@@ -193,6 +197,10 @@ combo_t key_combos[] = {
     COMBO(combo7, TT(13)),
     COMBO(combo8, KC_ESC),
     COMBO(combo9, KC_ESC),
+    COMBO(combo10, KC_ENTER),
+    COMBO(combo11, KC_ENTER),
+    COMBO(combo12, KC_TAB),
+    COMBO(combo13, KC_TAB),
 };
 
 // --- Tap Dance Logic ---
