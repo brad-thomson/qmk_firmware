@@ -86,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                         KC_TRANSPARENT,     KC_TRANSPARENT,                                                                 KC_TRANSPARENT,     TO(1)
   ),
 
-  // Layer 6: Media (Mac)
+  // Layer 6: Function (Mac)
   [6] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_TRANSPARENT,     KC_TRANSPARENT,     KC_TRANSPARENT,     KC_TRANSPARENT,     KC_TRANSPARENT,                                                                 KC_TRANSPARENT,     KC_TRANSPARENT,     KC_TRANSPARENT,     KC_TRANSPARENT,     KC_TRANSPARENT,     QK_BOOT,
     KC_TRANSPARENT, KC_MEDIA_STOP,      KC_MEDIA_PREV_TRACK,KC_MEDIA_PLAY_PAUSE,KC_MEDIA_NEXT_TRACK,KC_BRIU,                                                                        KC_F12,             KC_F7,              KC_F8,              KC_F9,              KC_SCRL,            KC_TRANSPARENT,
@@ -95,7 +95,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                         KC_TRANSPARENT,     KC_TRANSPARENT,                                                                 KC_TRANSPARENT,     KC_TRANSPARENT
   ),
 
-  // Layer 7: Media (PC)
+  // Layer 7: Function (PC)
   [7] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_TRANSPARENT,     KC_TRANSPARENT,     KC_TRANSPARENT,     KC_TRANSPARENT,     KC_TRANSPARENT,                                                                 KC_TRANSPARENT,     KC_TRANSPARENT,     KC_TRANSPARENT,     KC_TRANSPARENT,     KC_TRANSPARENT,     QK_BOOT,
     KC_TRANSPARENT, KC_MEDIA_STOP,      KC_MEDIA_PREV_TRACK,KC_MEDIA_PLAY_PAUSE,KC_MEDIA_NEXT_TRACK,KC_BRIU,                                                                        KC_F12,             KC_F7,              KC_F8,              KC_F9,              KC_SCRL,            KC_TRANSPARENT,
@@ -122,7 +122,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                         KC_DOT,             KC_TRANSPARENT,                                                                 KC_TRANSPARENT,     KC_TRANSPARENT
   ),
 
-  // Layer 10: QWERTY Fallback (Mac)
+  // Layer 10: QWERTY (Mac)
   [10] = LAYOUT_voyager(
     TD(TD_ESC_EQL), KC_1,               KC_2,               KC_3,               KC_4,               KC_5,                                                                           KC_6,               KC_7,               KC_8,               KC_9,               KC_0,               KC_MINUS,
     CW_TOGG,        KC_Q,               KC_W,               KC_E,               KC_R,               KC_T,                                                                           KC_Y,               KC_U,               KC_I,               KC_O,               KC_P,               KC_BSLS,
@@ -131,7 +131,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                         KC_LEFT_ALT,        KC_TRANSPARENT,                                                                 KC_BSPC,            KC_ENTER
   ),
 
-  // Layer 11: QWERTY Fallback (PC)
+  // Layer 11: QWERTY (PC)
   [11] = LAYOUT_voyager(
     TD(TD_ESC_EQL), KC_1,               KC_2,               KC_3,               KC_4,               KC_5,                                                                           KC_6,               KC_7,               KC_8,               KC_9,               KC_0,               KC_MINUS,
     CW_TOGG,        KC_Q,               KC_W,               KC_E,               KC_R,               KC_T,                                                                           KC_Y,               KC_U,               KC_I,               KC_O,               KC_P,               KC_BSLS,
@@ -140,7 +140,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                         KC_LEFT_ALT,        KC_TRANSPARENT,                                                                 KC_BSPC,            KC_ENTER
   ),
 
-  // Layer 12: Mac Creator
+  // Layer 12: Creator (Mac)
   [12] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_TRANSPARENT,     KC_TRANSPARENT,     KC_TRANSPARENT,     KC_TRANSPARENT,     KC_TRANSPARENT,                                                                 KC_TRANSPARENT,     KC_TRANSPARENT,     KC_TRANSPARENT,     KC_TRANSPARENT,     KC_TRANSPARENT,     KC_TRANSPARENT,
     KC_TRANSPARENT, TD(TD_TAB_ESC),     KC_1,               KC_2,               KC_3,               KC_B,                                                                           LCTL(KC_KP_3),      LCTL(KC_KP_7),      KC_KP_7,            KC_KP_3,            KC_KP_1,            KC_TRANSPARENT,
@@ -149,7 +149,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                         TO(0),              KC_SPACE,                                                                       KC_ENTER,           KC_BSPC
   ),
 
-  // Layer 13: PC Creator
+  // Layer 13: Creator (PC)
   [13] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_TRANSPARENT,     KC_TRANSPARENT,     KC_TRANSPARENT,     KC_TRANSPARENT,     KC_TRANSPARENT,                                                                 KC_TRANSPARENT,     KC_TRANSPARENT,     KC_TRANSPARENT,     KC_TRANSPARENT,     KC_TRANSPARENT,     KC_TRANSPARENT,
     KC_TRANSPARENT, TD(TD_TAB_ESC),     KC_1,               KC_2,               KC_3,               KC_B,                                                                           LCTL(KC_KP_3),      LCTL(KC_KP_7),      KC_KP_7,            KC_KP_3,            KC_KP_1,            KC_TRANSPARENT,

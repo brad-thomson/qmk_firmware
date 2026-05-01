@@ -1,36 +1,32 @@
-# Quantum Mechanical Keyboard Firmware
+# Senyoku: Custom ZSA Voyager Keymap
 
-[![Current Version](https://img.shields.io/github/tag/qmk/qmk_firmware.svg)](https://github.com/qmk/qmk_firmware/tags)
-[![Discord](https://img.shields.io/discord/440868230475677696.svg)](https://discord.gg/qmk)
-[![Docs Status](https://img.shields.io/badge/docs-ready-orange.svg)](https://docs.qmk.fm)
-[![GitHub contributors](https://img.shields.io/github/contributors/qmk/qmk_firmware.svg)](https://github.com/qmk/qmk_firmware/pulse/monthly)
-[![GitHub forks](https://img.shields.io/github/forks/qmk/qmk_firmware.svg?style=social&label=Fork)](https://github.com/qmk/qmk_firmware/)
+A highly optimized, cross-platform QMK firmware configuration for the ZSA Voyager. Designed for efficiency, this layout bridges the gap between daily ergonomic typing and highly specific creative software workflows.
 
-This is a keyboard firmware based on the [tmk\_keyboard firmware](https://github.com/tmk/tmk_keyboard) with some useful features for Atmel AVR and ARM controllers, and more specifically, the [OLKB product line](https://olkb.com), the [ErgoDox EZ](https://ergodox-ez.com) keyboard, and the Clueboard product line.
+## Layout Overview
 
-## Documentation
+*The visualizer below is automatically generated and updated via GitHub Actions using Keymap Drawer.*
 
-* [See the official documentation on docs.qmk.fm](https://docs.qmk.fm)
+<!-- keymap_drawer_start -->
+<!-- keymap_drawer_end -->
 
-The docs are powered by [VitePress](https://vitepress.dev/). They are also viewable offline; see [Previewing the Documentation](https://docs.qmk.fm/#/contributing?id=previewing-the-documentation) for more details.
+## Core Features
 
-You can request changes by making a fork and opening a [pull request](https://github.com/qmk/qmk_firmware/pulls).
+* **Colemak-DH Base:** Ergonomic alpha layout optimized for reduced finger travel.
+* **Bottom Row Mod-Taps:** Primary modifiers are mapped to the bottom row rather than the home row, ensuring clean taps and holds.
+* **Native Bilateral Combinations:** Utilizes QMK's native `CHORDAL_HOLD` and `PERMISSIVE_HOLD` settings to strictly enforce opposite-hand modifier activation on base layers, preventing misfires during rapid typing.
+* **Cross-Platform Parity:** Mirrored matrix stacks for both macOS and Windows/PC. The layout maintains identical physical positions for OS-specific modifiers (GUI vs. Ctrl) across environments.
+* **Creator Layers:** Dedicated modes (Layers 12 & 13) for creative workflows. These layers feature dynamic C-level overrides to bypass strict bilateral rules, allowing for instantaneous, same-hand shortcut combinations.
+* **Hardware KVM Macros:** Integrated macros (`MACRO_KVM_1`, `MACRO_KVM_2`) that simultaneously trigger the hardware display switch and shift the keyboard to the corresponding OS base layer.
+* **Optimized RGB Matrix:** Custom, integer-based HSV-to-RGB conversion logic. Strips out bulky QMK animations to conserve microcontroller cycles while maintaining crisp, layer-specific color indication.
 
-## Supported Keyboards
+## Repository Structure
 
-* [Planck](/keyboards/planck/)
-* [Preonic](/keyboards/preonic/)
-* [ErgoDox EZ](/keyboards/ergodox_ez/)
-* [Clueboard](/keyboards/clueboard/)
-* [Cluepad](/keyboards/clueboard/17/)
-* [Atreus](/keyboards/atreus/)
+* `keymap.c`: The core layout matrix, combo configurations, tap-dance logic, and custom RGB event loops.
+* `config.h`: Tapping term definitions, hardware-level hold behaviors, and RGB matrix system configurations.
+* `rules.mk`: Minimized compiler settings, disabling unused QMK features to optimize firmware size and enable Link Time Optimization (LTO).
 
-The project also includes community support for [lots of other keyboards](/keyboards/).
+## Build and Flash Instructions
 
-## Maintainers
-
-QMK is developed and maintained by Jack Humbert of OLKB with contributions from the community, and of course, [Hasu](https://github.com/tmk). The OLKB product firmwares are maintained by [Jack Humbert](https://github.com/jackhumbert), the Ergodox EZ by [ZSA Technology Labs](https://github.com/zsa), the Clueboard by [Zach White](https://github.com/skullydazed), and the Atreus by [Phil Hagelberg](https://github.com/technomancy).
-
-## Official Website
-
-[qmk.fm](https://qmk.fm) is the official website of QMK, where you can find links to this page, the documentation, and the keyboards supported by QMK.
+To compile and flash this keymap directly to the Voyager, ensure your local QMK environment is up to date and run the following command from the root of the `qmk_firmware` repository:
+```bash
+qmk flash -kb zsa/voyager -km senyoku

@@ -1,0 +1,25 @@
+```yaml
+name: Draw Keymap
+on:
+  push:
+    branches:
+      - senyoku-mainline
+    paths:
+      - 'keyboards/zsa/voyager/keymaps/senyoku/keymap.c'
+
+jobs:
+  draw:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Draw keymap
+        uses: caksoylar/keymap-drawer@main
+        with:
+          keymap_patterns: 'keyboards/zsa/voyager/keymaps/senyoku/keymap.c'
+          config_path: '' # Optional: We'll leave this blank to use defaults first
+          output_folder: 'keyboards/zsa/voyager/keymaps/senyoku' # Saves the SVG here
+          amend_commit: false # Creates a new commit rather than rewriting history
