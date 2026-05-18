@@ -1,29 +1,46 @@
-# Senyoku: Custom ZSA Voyager Keymap
+# Senyoku: Custom QMK Keymaps (Voyager & Crab Broom)
 
-A highly optimized, cross-platform QMK firmware configuration for the ZSA Voyager. Designed for efficiency, this layout bridges the gap between daily ergonomic typing and highly specific creative software workflows.
+Highly optimized, cross-platform QMK firmware configurations designed for efficiency and ergonomic comfort.
 
-### Layout Overview
+## Keyboards
 
-![Voyager Layout](keyboards/zsa/voyager/keymaps/senyoku/voyager_keymap.svg)
+### 1. ZSA Voyager
+*   **MCU:** STM32F303
+*   **Keymap:** `senyoku`
+*   **Features:** Colemak-DH, Dual-OS support, RGB Matrix indicators, Hardware KVM macros.
 
-## Core Features
+### 2. Crab Broom / Ferris Sweep
+*   **MCU:** RP2040 (Boardsource Blok)
+*   **Keymap:** `senyoku`
+*   **Features:** Ported Voyager layout (3x5+2), Minimalist (No RGB), Optimized for the Blok controller.
 
-* **Colemak-DH Base:** Ergonomic alpha layout optimized for reduced finger travel.
-* **Bottom Row Mod-Taps:** Primary modifiers are mapped to the bottom row rather than the home row, ensuring clean taps and holds.
-* **Native Bilateral Combinations:** Utilizes QMK's native `CHORDAL_HOLD` and `PERMISSIVE_HOLD` settings to strictly enforce opposite-hand modifier activation on base layers, preventing misfires during rapid typing.
-* **Cross-Platform Parity:** Mirrored matrix stacks for both macOS and Windows/PC. The layout maintains identical physical positions for OS-specific modifiers (GUI vs. Ctrl) across environments.
-* **Creator Layers:** Dedicated modes (Layers 12 & 13) for creative workflows. These layers feature dynamic C-level overrides to bypass strict bilateral rules, allowing for instantaneous, same-hand shortcut combinations.
-* **Hardware KVM Macros:** Integrated macros (`MACRO_KVM_1`, `MACRO_KVM_2`) that simultaneously trigger the hardware display switch and shift the keyboard to the corresponding OS base layer.
-* **Optimized RGB Matrix:** Custom, integer-based HSV-to-RGB conversion logic. Strips out bulky QMK animations to conserve microcontroller cycles while maintaining crisp, layer-specific color indication.
+## Core Features (Both Boards)
 
-## Repository Structure
-
-* `keymap.c`: The core layout matrix, combo configurations, tap-dance logic, and custom RGB event loops.
-* `config.h`: Tapping term definitions, hardware-level hold behaviors, and RGB matrix system configurations.
-* `rules.mk`: Minimized compiler settings, disabling unused QMK features to optimize firmware size and enable Link Time Optimization (LTO).
+*   **Colemak-DH Base:** Ergonomic alpha layout optimized for reduced finger travel.
+*   **Native Bilateral Combinations:** Utilizes QMK's native `CHORDAL_HOLD` and `PERMISSIVE_HOLD` settings to strictly enforce opposite-hand modifier activation, preventing misfires during rapid typing.
+*   **Cross-Platform Parity:** Mirrored matrix stacks for both macOS and Windows/PC. Maintaining identical physical positions for OS-specific modifiers.
+*   **Hardware KVM Macros:** Integrated macros (`MACRO_KVM_1`, `MACRO_KVM_2`) that simultaneously trigger hardware display switches and shift the keyboard to the corresponding OS layer.
 
 ## Build and Flash Instructions
 
-To compile and flash this keymap directly to the Voyager, ensure your local QMK environment is up to date and run the following command from the root of the `qmk_firmware` repository:
+### Prerequisites (Nix)
+This environment uses `nix-shell` for reproducible builds. Ensure Nix is installed and run commands from the project root.
+
+### ZSA Voyager
+To compile and flash the Voyager:
 ```bash
-qmk flash -kb zsa/voyager -km senyoku
+nix-shell -p qmk --run "qmk flash -kb zsa/voyager -km senyoku"
+```
+
+### Crab Broom (RP2040)
+To compile the Crab Broom firmware:
+```bash
+nix-shell -p qmk --run "make crab_broom:senyoku"
+```
+The build will generate a `crab_broom_senyoku.uf2` file in the root directory.
+
+**To Flash:**
+1. Put the Boardsource Blok into bootloader mode (double-tap the Reset button or hold Boot while plugging in).
+2. The controller will appear as a USB drive named `RPI-RP2`.
+3. Drag and drop the `crab_broom_senyoku.uf2` file onto the drive.
+4. Repeat for the other half.
