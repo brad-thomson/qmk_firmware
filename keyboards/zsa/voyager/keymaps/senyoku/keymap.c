@@ -173,10 +173,8 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM = LAYOUT(
 // Mapped cleanly since HRMs were returned to the bottom row.
 const uint16_t PROGMEM combo0[] = { MO(2), OSL(4), COMBO_END};
 const uint16_t PROGMEM combo1[] = { MO(3), OSL(5), COMBO_END};
-const uint16_t PROGMEM combo2[] = { MT(MOD_LCTL, KC_Z), MT(MOD_LALT, KC_X), COMBO_END};
 const uint16_t PROGMEM combo3[] = { KC_SPACE, OSL(4), COMBO_END};
 const uint16_t PROGMEM combo4[] = { KC_SPACE, OSL(5), COMBO_END};
-const uint16_t PROGMEM combo5[] = { MT(MOD_LGUI, KC_Z), MT(MOD_LALT, KC_X), COMBO_END};
 const uint16_t PROGMEM combo6[] = { MO(2), OSM(MOD_LSFT), COMBO_END};
 const uint16_t PROGMEM combo7[] = { MO(3), OSM(MOD_LSFT), COMBO_END};
 const uint16_t PROGMEM combo8[] = { KC_S, KC_T, COMBO_END};
@@ -189,10 +187,8 @@ const uint16_t PROGMEM combo13[] = { KC_I, KC_O, COMBO_END};
 combo_t key_combos[] = {
     COMBO(combo0, TT(6)),
     COMBO(combo1, TT(7)),
-    COMBO(combo2, TO(1)), // Mac toggle
     COMBO(combo3, TT(8)),
     COMBO(combo4, TT(9)),
-    COMBO(combo5, TO(0)), // PC toggle
     COMBO(combo6, TT(12)),
     COMBO(combo7, TT(13)),
     COMBO(combo8, KC_ESC),
