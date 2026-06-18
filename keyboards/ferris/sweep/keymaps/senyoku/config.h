@@ -1,6 +1,5 @@
 /*
- * Crab Broom Configuration
- * Ported from Voyager Senyoku
+ * Senyoku Keymap Configuration
  */
 
 #pragma once
