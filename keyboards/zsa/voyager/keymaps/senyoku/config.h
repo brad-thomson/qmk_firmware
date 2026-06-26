@@ -5,6 +5,7 @@
 #define PERMISSIVE_HOLD
 #define TAPPING_TERM 200
 #define TAPPING_TOGGLE 1
+#define FLOW_TAP_TERM 150 // Force tap when typing fast (require-prior-idle)
 
 // --- Combos & One-Shot ---
 #undef ONESHOT_TIMEOUT
